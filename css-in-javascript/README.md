@@ -36,7 +36,7 @@
 
   > Why? Similar to BEM, this naming convention makes it clear that the styles are intended to modify the element preceded by the underscore. Underscores do not need to be quoted, so they are preferred over other characters, such as dashes.
 
-    ```js
+```js
     // bad
     {
       bruceBanner: {
@@ -60,13 +60,13 @@
         color: 'green',
       },
     }
-    ```
+```
 
   - Use `selectorName_fallback` for sets of fallback styles.
 
   > Why? Similar to modifiers, keeping the naming consistent helps reveal the relationship of these styles to the styles that override them in more adequate browsers.
 
-    ```js
+```js
     // bad
     {
       muscles: {
@@ -88,13 +88,13 @@
         width: '100%',
       },
     }
-    ```
+```
 
   - Use a separate selector for sets of fallback styles.
 
   > Why? Keeping fallback styles contained in a separate object clarifies their purpose, which improves readability.
 
-    ```js
+```js
     // bad
     {
       muscles: {
@@ -129,13 +129,13 @@
         display: 'inline-block',
       },
     }
-    ```
+```
 
   - Use device-agnostic names (e.g. "small", "medium", and "large") to name media query breakpoints.
 
   > Why? Commonly used names like "phone", "tablet", and "desktop" do not match the characteristics of the devices in the real world. Using these names sets the wrong expectations.
 
-    ```js
+```js
     // bad
     const breakpoints = {
       mobile: '@media (max-width: 639px)',
@@ -149,7 +149,7 @@
       medium: '@media (max-width: 1047px)',
       large: '@media (min-width: 1048px)',
     };
-    ```
+```
 
 ## Ordering
 
@@ -157,7 +157,7 @@
 
   > Why? We use a higher-order component to theme our styles, which is naturally used after the component definition. Passing the styles object directly to this function reduces indirection.
 
-    ```jsx
+```jsx
     // bad
     const styles = {
       container: {
@@ -192,7 +192,7 @@
         display: 'inline-block',
       },
     }))(MyComponent);
-    ```
+```
 
 ## Nesting
 
@@ -200,7 +200,7 @@
 
   > Why? The whitespace improves readability and reduces the likelihood of merge conflicts.
 
-    ```js
+```js
     // bad
     {
       bigBang: {
@@ -228,7 +228,7 @@
         border: 'none',
       },
     }
-    ```
+```
 
 ## Inline
 
@@ -236,7 +236,7 @@
 
   > Why? Generating themed stylesheets can be expensive, so they are best for discrete sets of styles.
 
-    ```jsx
+```jsx
     // bad
     export default function MyComponent({ spacing }) {
       return (
@@ -255,7 +255,7 @@
         display: 'table',
       },
     }))(MyComponent);
-    ```
+```
 
 ## Themes
 
@@ -265,7 +265,7 @@
 
   - Define colors only in themes.
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       chuckNorris: {
@@ -279,11 +279,11 @@
         color: color.badass,
       },
     }))(MyComponent);
-    ```
+```
 
   - Define fonts only in themes.
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       towerOfPisa: {
@@ -297,11 +297,11 @@
         fontStyle: font.italic,
       },
     }))(MyComponent);
-    ```
+```
 
   - Define fonts as sets of related styles.
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       towerOfPisa: {
@@ -318,11 +318,11 @@
         ...font.italian,
       },
     }))(MyComponent);
-    ```
+```
 
   - Define base grid units in theme (either as a value or a function that takes a multiplier).
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       rip: {
@@ -343,11 +343,11 @@
         bottom: 864 * unit, // 6 feet, assuming our unit is 8px
       },
     }))(MyComponent);
-    ```
+```
 
   - Define media queries only in themes.
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       container: {
@@ -369,13 +369,13 @@
         },
       },
     }))(MyComponent);
-    ```
+```
 
   - Define tricky fallback properties in themes.
 
   > Why? Many CSS-in-JavaScript implementations merge style objects together which makes specifying fallbacks for the same property (e.g. `display`) a little tricky. To keep the approach unified, put these fallbacks in the theme.
 
-    ```js
+```js
     // bad
     export default withStyles(() => ({
       .muscles {
@@ -408,13 +408,13 @@
         [fallback('display')]: 'table',
       },
     }))(MyComponent);
-    ```
+```
 
   - Create as few custom themes as possible. Many applications may only have one theme.
 
   - Namespace custom theme settings under a nested object with a unique and descriptive key.
 
-    ```js
+```js
     // bad
     ThemedStyleSheet.registerTheme('mySection', {
       mySectionPrimaryColor: 'green',
@@ -426,7 +426,7 @@
         primaryColor: 'green',
       },
     });
-    ```
+```
 
 ---
 
