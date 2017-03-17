@@ -15,8 +15,8 @@
   - Use camelCase for object keys (i.e. "selectors").
 
   > Why? We access these keys as properties on the `styles` object in the component, so it is most convenient to use camelCase.
-
-    ```js
+  
+```javascript
     // bad
     {
       'bermuda-triangle': {
@@ -30,7 +30,7 @@
         display: 'none',
       },
     }
-    ```
+```
 
   - Use an underscore for modifiers to other styles.
 
